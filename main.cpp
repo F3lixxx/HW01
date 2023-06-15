@@ -1,48 +1,46 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <algorithm>
 
-void file(std::string in){
-    //std::ifstream fin("/home/felixxx/Clion/HW01/in.txt"); //это в убунту
-    std::ifstream fin(in); //винда
-    //std::ofstream fileout("/home/felixxx/Clion/HW01/out.txt"); //это в убунту
+int main(){
+    int sizeN = 0;
+    int sizeM = 0;
+
+    std::ifstream fin("in.txt"); //винда
     std::ofstream fileout("out.txt"); //винда
 
     if(fin.is_open() && fileout.is_open()) {
-        int size;
-        while (!fin.eof()) {
-            fin >> size;
-            fileout << size;
-            std::cout << size << ' ' << '\n';
-            fileout << '\n';
-
-            int *mas = new int[size];
-            for (int i = size-1; i >= 0 ; i--) {
-                fin >> mas[i];
-            }
-
-
-            for (int i = 0; i < size; i++){
-                fileout << mas[i] << ' ';
-                std::cout << mas[i] << ' ';
-            }
-
-            std::cout << '\n';
-            fileout << '\n';
-
-            delete[] mas;
+        fin >>sizeN;
+        int* masN = new int [sizeN];
+        for (int i = 0; i < sizeN; ++i) {
+            fin >> masN[i];
         }
-    } else{
-        std:: cout << "File is not open!";
+
+        fin >>sizeM;
+
+        int* masM = new int [sizeM];
+        for (int i = 0; i < sizeM; ++i) {
+            fin >> masM[i];
+        }
+
+        fileout << sizeM << ' ' << '\n';
+        std::cout << sizeM << '\n';
+        for (int i = sizeM - 1; i >= 0; --i) {
+            fileout << masM[i] << ' ';
+            std:: cout << masM[i] << ' ';
+        }
+            fileout << '\n';
+            std:: cout << '\n';
+
+
+        fileout << sizeN << ' ' << '\n';
+        std::cout << sizeN << '\n';
+        for (int i = sizeN - 1; i >= 0; --i) {
+            fileout << masN[i] << ' ';
+            std:: cout << masN[i] << ' ';
+        }
+        fileout << '\n';
+        std:: cout << '\n';
+        }
+        return 0;
     }
-    fin.close();
-    fileout.close();
-}
-
-int main() {
-
-    file("in.txt");
-
-    return 0;
-}
