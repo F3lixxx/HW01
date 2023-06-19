@@ -25,7 +25,9 @@ int main(){
 
         fileout << sizeM << ' ' << '\n';
         std::cout << sizeM << '\n';
-        for (int i = sizeM - 1; i >= 0; --i) {
+        fileout << masM[5] << ' ';
+        std:: cout << masM[5] << ' ';
+        for (int i = 0; i < sizeM - 1; i++) {
             fileout << masM[i] << ' ';
             std:: cout << masM[i] << ' ';
         }
@@ -35,10 +37,11 @@ int main(){
 
         fileout << sizeN << ' ' << '\n';
         std::cout << sizeN << '\n';
-        for (int i = sizeN - 1; i >= 0; --i) {
+        for (int i = 1; i < sizeN; i++) {
             fileout << masN[i] << ' ';
             std:: cout << masN[i] << ' ';
         }
+        std:: cout << masN[0] << ' ';
         fileout << '\n';
         std:: cout << '\n';
         }
